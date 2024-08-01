@@ -5,13 +5,16 @@ import SearchInput from "./SearchInput";
 import SearchResults from "./SearchResults";
 import { CompanyDto } from "@/types";
 import Spinner from "../ui/Spinner";
+import PageTitle from "../ui/Heading";
+import { PAGE_SIZE, TOTAL_ITEMS } from "@/utils/constants";
+import Button from "../ui/Button";
 
 export default function Search() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
   const [companies, setCompanies] = useState<CompanyDto[]>([]);
-  console.log(companies);
+  const [page, setPage] = useState(1);
 
   function handleQuery(e: ChangeEvent<HTMLInputElement>) {
     setQuery(e.target.value);
@@ -25,13 +28,24 @@ export default function Search() {
     [query, companies],
   );
 
+  const paginatedData = useMemo(
+    () => filteredData.slice(0, page * PAGE_SIZE),
+    [page, filteredData],
+  );
+
+  function handleClick() {
+    console.log(page);
+    if (page * PAGE_SIZE >= filteredData.length) return;
+    setPage((prevState) => prevState + 1);
+  }
+
   useEffect(() => {
     async function fetchData() {
       try {
         setIsLoading(true);
         setError("");
         const res = await fetch(
-          "https://fakerapi.it/api/v1/companies?_quantity=1000",
+          `https://fakerapi.it/api/v1/companies?_quantity=${TOTAL_ITEMS}`,
         );
         const { data } = await res.json();
         setCompanies(data);
@@ -58,12 +72,16 @@ export default function Search() {
 
   return (
     <>
+      <PageTitle className="text-blue-900">Simple Search Page</PageTitle>
       <SearchInput
         placeholder="Rechercher"
         value={query}
         onChange={handleQuery}
       />
-      <SearchResults data={filteredData} />
+      <SearchResults data={paginatedData} />
+      {page * PAGE_SIZE < filteredData.length && (
+        <Button onClick={handleClick}>Plus de résultats</Button>
+      )}
     </>
   );
 }

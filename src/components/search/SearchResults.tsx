@@ -10,7 +10,7 @@ export default function SearchResults({ data }: SearchResultsProps) {
   const transformedData = transformCompanyDtos(data);
 
   return (
-    <section className="grid min-h-screen w-full grid-cols-1 gap-4 p-4 lg:grid-cols-2 xl:grid-cols-3">
+    <section className="mb-8 grid w-full grid-cols-1 gap-x-6 gap-y-12 p-4 lg:grid-cols-2 xl:grid-cols-3">
       {transformedData.map((company) => (
         <CompanyCard key={company.id} data={company} />
       ))}
