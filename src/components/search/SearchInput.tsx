@@ -14,7 +14,7 @@ export default function SearchInput({
   ...props
 }: SearchInputProps) {
   return (
-    <div className="relative mb-8 block w-1/2 xl:w-1/3">
+    <div className="relative block w-1/2 xl:w-1/3">
       <label htmlFor="search" className="sr-only">
         Search
       </label>

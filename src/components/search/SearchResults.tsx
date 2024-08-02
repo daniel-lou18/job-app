@@ -1,6 +1,7 @@
 import JobCard from "@/components/search/JobCard";
 import { Job } from "@/types";
 import SearchResultsSkeleton from "./SearchResultsSkeleton";
+import { PAGE_SIZE } from "@/utils/constants";
 
 type SearchResultsProps = { data: Job[]; count: number; isLoading: boolean };
 
@@ -12,7 +13,7 @@ export default function SearchResults({
   if (!data?.length && !isLoading) return null;
 
   return (
-    <section className="mb-8 w-full p-4">
+    <section className="mb-8 w-full">
       <h4 className="mb-6 text-xl font-bold">
         Jobs
         {count > 0 && (
@@ -24,7 +25,7 @@ export default function SearchResults({
       <div className="grid grid-cols-1 gap-x-6 gap-y-12 lg:grid-cols-2 xl:grid-cols-3">
         {!data?.length &&
           isLoading &&
-          Array.from({ length: 12 }, (_, idx) => (
+          Array.from({ length: PAGE_SIZE }, (_, idx) => (
             <SearchResultsSkeleton key={idx} />
           ))}
 

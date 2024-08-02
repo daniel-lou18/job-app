@@ -1,13 +1,5 @@
 import { Job } from "@/types";
-import {
-  Banknote,
-  DollarSign,
-  Locate,
-  LocateIcon,
-  MailOpen,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { Banknote, MapPin } from "lucide-react";
 import React from "react";
 import Card from "../ui/Card";
 
