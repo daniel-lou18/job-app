@@ -1,10 +1,10 @@
+import { cn } from "@/lib/utils";
 import { Heart } from "lucide-react";
-import Link from "next/link";
 import { PropsWithChildren, ReactElement } from "react";
 
 function Card({ children }: PropsWithChildren<{}>) {
   return (
-    <article className="grid w-full max-w-md gap-6 rounded-md border border-gray-200 p-6">
+    <article className="grid w-full max-w-md gap-6 rounded-md border border-gray-200 bg-background p-6 transition-all hover:cursor-pointer hover:border-gray-400">
       {children}
     </article>
   );
@@ -14,41 +14,27 @@ function CardTitle({ children }: PropsWithChildren<{}>) {
   return (
     <div className="flex items-center justify-between">
       <h3 className="text-xl font-bold">{children}</h3>
-      <Heart className="text-muted-foreground h-6 w-6" />
+      <Heart className="h-6 w-6 text-muted-foreground" />
     </div>
   );
 }
 
 function CardContent({ children }: PropsWithChildren<{}>) {
-  return <div className="text-muted-foreground grid gap-2">{children}</div>;
+  return <div className="grid gap-2 text-muted-foreground">{children}</div>;
 }
 
 function CardItem({
   children,
+  className,
   icon,
 }: {
-  icon: ReactElement;
+  className?: string;
+  icon?: ReactElement;
 } & PropsWithChildren<{}>) {
   return (
-    <div className="flex items-center gap-2">
+    <div className={cn("flex items-center gap-2", className)}>
       {icon}
       <p className="text-md">{children}</p>
-    </div>
-  );
-}
-
-function CardLink({
-  children,
-  icon,
-}: {
-  icon: ReactElement;
-} & PropsWithChildren<{}>) {
-  return (
-    <div className="flex items-center gap-2">
-      {icon}
-      <Link href="#" className="hover:underline" prefetch={false}>
-        {children}
-      </Link>
     </div>
   );
 }
@@ -56,6 +42,5 @@ function CardLink({
 Card.Title = CardTitle;
 Card.Content = CardContent;
 Card.Item = CardItem;
-Card.Link = CardLink;
 
 export default Card;

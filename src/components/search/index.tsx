@@ -1,87 +1,59 @@
 "use client";
 
-import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import SearchInput from "./SearchInput";
 import SearchResults from "./SearchResults";
-import { CompanyDto } from "@/types";
-import Spinner from "../ui/Spinner";
+import Overlay from "../ui/Overlay";
 import PageTitle from "../ui/Heading";
 import { PAGE_SIZE, TOTAL_ITEMS } from "@/utils/constants";
 import Button from "../ui/Button";
+import { useJobs } from "@/hooks/useJobs";
+import Container from "../ui/Container";
 
 export default function Search() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [query, setQuery] = useState("");
-  const [companies, setCompanies] = useState<CompanyDto[]>([]);
-  const [page, setPage] = useState(1);
+  const {
+    isLoading,
+    error,
+    query,
+    handleQuery,
+    page,
+    filteredData,
+    paginatedData,
+    handleClick,
+  } = useJobs();
 
-  function handleQuery(e: ChangeEvent<HTMLInputElement>) {
-    setQuery(e.target.value);
-  }
-
-  const filteredData = useMemo(
-    () =>
-      companies.filter((company) =>
-        company.name.trim().toLowerCase().includes(query.toLowerCase()),
-      ),
-    [query, companies],
-  );
-
-  const paginatedData = useMemo(
-    () => filteredData.slice(0, page * PAGE_SIZE),
-    [page, filteredData],
-  );
-
-  function handleClick() {
-    console.log(page);
-    if (page * PAGE_SIZE >= filteredData.length) return;
-    setPage((prevState) => prevState + 1);
-  }
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setIsLoading(true);
-        setError("");
-        const res = await fetch(
-          `https://fakerapi.it/api/v1/companies?_quantity=${TOTAL_ITEMS}`,
-        );
-        const { data } = await res.json();
-        setCompanies(data);
-      } catch (err: unknown) {
-        setError(
-          err instanceof Error ? err.message : "Could not fetch companies",
-        );
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
+  let renderedContent;
 
   if (!isLoading && error) {
-    return <p>Erreur lors du chargement des données</p>;
+    renderedContent = <p>Erreur lors du chargement des données</p>;
+  } else {
+    renderedContent = (
+      <>
+        {isLoading && <Overlay />}
+        <SearchResults
+          data={paginatedData}
+          isLoading={isLoading}
+          count={filteredData?.length}
+        />
+        {page * PAGE_SIZE < filteredData.length && (
+          <Button onClick={handleClick}>Plus de résultats</Button>
+        )}
+      </>
+    );
   }
 
   return (
     <>
-      <PageTitle className="text-blue-900">Simple Search Page</PageTitle>
-      <SearchInput
-        placeholder="Rechercher"
-        value={query}
-        onChange={handleQuery}
-      />
-      <SearchResults data={paginatedData} />
-      {page * PAGE_SIZE < filteredData.length && (
-        <Button onClick={handleClick}>Plus de résultats</Button>
-      )}
+      <Container className="flex flex-col items-center bg-gray-100 pb-12 pt-8">
+        <PageTitle>Simple Job Search</PageTitle>
+        <SearchInput
+          placeholder="Rechercher par job, ville ou entreprise"
+          value={query}
+          onChange={handleQuery}
+        />
+      </Container>
+      <Container className="relative flex min-h-screen w-full flex-1 flex-col items-center px-24 pb-12 pt-6">
+        {renderedContent}
+      </Container>
     </>
   );
 }
