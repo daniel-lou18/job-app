@@ -8,6 +8,7 @@ import { PAGE_SIZE, TOTAL_ITEMS } from "@/utils/constants";
 import Button from "../ui/Button";
 import { useJobs } from "@/hooks/useJobs";
 import Container from "../ui/Container";
+import Error from "../ui/Error";
 
 export default function Search() {
   const {
@@ -24,7 +25,7 @@ export default function Search() {
   let renderedContent;
 
   if (!isLoading && error) {
-    renderedContent = <p>Erreur lors du chargement des données</p>;
+    renderedContent = <Error errorMessage={error} />;
   } else {
     renderedContent = (
       <>
@@ -43,7 +44,7 @@ export default function Search() {
 
   return (
     <>
-      <Container className="sticky top-16 z-10 flex flex-col items-center gap-6 bg-gray-100/80 py-10 backdrop-blur-md">
+      <Container className="sticky top-12 z-20 flex flex-col items-center gap-6 bg-gray-100/80 py-10 backdrop-blur-md">
         <PageTitle>Trouver un job dans la tech</PageTitle>
         <SearchInput
           placeholder="Rechercher par job, ville ou entreprise"

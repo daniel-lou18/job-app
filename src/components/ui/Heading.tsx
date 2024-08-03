@@ -11,7 +11,7 @@ export default function PageTitle({
   ...props
 }: PageTitleProps) {
   return (
-    <h1 {...props} className={cn(className, "text-3xl font-semibold")}>
+    <h1 {...props} className={cn(className, "px-4 text-3xl font-semibold")}>
       {children}
     </h1>
   );

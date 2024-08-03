@@ -4,7 +4,7 @@ import { PropsWithChildren, ReactElement } from "react";
 
 function Card({ children }: PropsWithChildren<{}>) {
   return (
-    <article className="grid w-full max-w-md gap-6 rounded-md border border-gray-200 bg-background p-6 transition-all hover:cursor-pointer hover:border-gray-400">
+    <article className="relative grid w-full max-w-md gap-6 rounded-md border border-gray-200 bg-background p-6 transition-all hover:cursor-pointer hover:border-gray-400">
       {children}
     </article>
   );

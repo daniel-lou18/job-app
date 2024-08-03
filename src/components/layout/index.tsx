@@ -1,10 +1,10 @@
-import { CodeXml, Workflow } from "lucide-react";
+import { CodeXml } from "lucide-react";
 import Link from "next/link";
-import React, { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef } from "react";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-10 flex h-16 w-full items-center justify-between bg-background bg-white px-4 md:px-24">
+    <header className="sticky top-0 z-20 flex h-12 w-full items-center justify-between bg-background bg-white px-4 md:px-24">
       <div className="flex gap-4">
         <Link href="#" className="flex gap-2" prefetch={false}>
           <CodeXml className="h-7 w-7" />

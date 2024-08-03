@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { Job } from "@/types";
-import data from "@/utils/data.json";
 import { PAGE_SIZE } from "@/utils/constants";
+import { getJobs } from "@/services/jobService";
 
 export function useJobs() {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,8 +16,8 @@ export function useJobs() {
         setIsLoading(true);
         setError("");
         await new Promise((resolve) => setTimeout(resolve, 1500));
-        // throw new Error("There was an error");
-        setJobs(data);
+        const jobs = await getJobs();
+        setJobs(jobs);
       } catch (err: unknown) {
         setError(err instanceof Error ? err.message : "Could not fetch jobs");
         console.log(err);
