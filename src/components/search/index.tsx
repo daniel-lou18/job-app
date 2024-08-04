@@ -17,9 +17,9 @@ export default function Search() {
     query,
     handleQuery,
     page,
-    filteredData,
-    paginatedData,
-    handleClick,
+    filteredJobs,
+    paginatedJobs,
+    handleLoadMore,
   } = useJobs();
 
   let renderedContent;
@@ -31,12 +31,12 @@ export default function Search() {
       <>
         {isLoading && <Overlay />}
         <SearchResults
-          data={paginatedData}
+          data={paginatedJobs}
           isLoading={isLoading}
-          count={filteredData?.length}
+          count={filteredJobs?.length}
         />
-        {page * PAGE_SIZE < filteredData.length && (
-          <Button onClick={handleClick}>Plus de résultats</Button>
+        {page * PAGE_SIZE < filteredJobs.length && (
+          <Button onClick={handleLoadMore}>Plus de résultats</Button>
         )}
       </>
     );

@@ -1,14 +1,19 @@
-import { ChangeEvent, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Job } from "@/types";
-import { PAGE_SIZE } from "@/utils/constants";
 import { getJobs } from "@/services/jobService";
+import { useJobsFilter } from "./useJobsFilter";
+import { useJobsPagination } from "./useJobsPagination";
 
 export function useJobs() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [query, setQuery] = useState("");
   const [jobs, setJobs] = useState<Job[]>([]);
-  const [page, setPage] = useState(1);
+
+  const { filteredJobs, query, handleQuery } = useJobsFilter(jobs);
+  const { page, paginatedJobs, handleLoadMore } = useJobsPagination(
+    filteredJobs,
+    setIsLoading,
+  );
 
   useEffect(() => {
     async function fetchData() {
@@ -29,42 +34,14 @@ export function useJobs() {
     fetchData();
   }, []);
 
-  function handleQuery(e: ChangeEvent<HTMLInputElement>) {
-    setQuery(e.target.value);
-  }
-
-  const filteredData = useMemo(
-    () =>
-      jobs.filter(
-        (job) =>
-          job.jobTitle.trim().toLowerCase().includes(query.toLowerCase()) ||
-          job.companyName.trim().toLowerCase().includes(query.toLowerCase()) ||
-          job.location.trim().toLowerCase().includes(query.toLowerCase()),
-      ),
-    [query, jobs],
-  );
-
-  const paginatedData = useMemo(
-    () => filteredData.slice(0, page * PAGE_SIZE),
-    [page, filteredData],
-  );
-
-  async function handleClick() {
-    if (page * PAGE_SIZE >= filteredData.length) return;
-    setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setPage((prevState) => prevState + 1);
-    setIsLoading(false);
-  }
-
   return {
     isLoading,
     error,
     query,
     handleQuery,
     page,
-    filteredData,
-    paginatedData,
-    handleClick,
+    filteredJobs,
+    paginatedJobs,
+    handleLoadMore,
   };
 }

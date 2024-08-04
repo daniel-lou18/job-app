@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import React, { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef } from "react";
 
 type ButtonProps = {
   onClick: () => void;
