@@ -10,7 +10,8 @@ export default function SearchResults({
   count,
   isLoading,
 }: SearchResultsProps) {
-  if (!data?.length && !isLoading) return null;
+  if (!data?.length && !isLoading)
+    return <p>Aucun résultat ne correspond à votre recherche</p>;
 
   return (
     <section className="mb-8 w-full">

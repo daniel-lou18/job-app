@@ -4,6 +4,7 @@ import data from "@/utils/data.json";
 import { Job } from "@/types";
 import { PAGE_SIZE } from "@/utils/constants";
 
+// helper function to render the component with the appropriate props
 function renderSearchResults(data: Job[], count = 10, isLoading = false) {
   return render(
     <SearchResults data={data} count={count} isLoading={isLoading} />,
@@ -35,12 +36,17 @@ test("it shows 50 Job Cards", () => {
   expect(lastTitle).toHaveTextContent(testData[49].jobTitle);
 });
 
-test("it shows no Job Cards when data prop is an empty array and isLoading prop is false", () => {
+test("it shows an appropriate message when data prop is an empty array (no search results) and isLoading prop is false", () => {
   const testData = [] as Job[];
 
-  const { container } = renderSearchResults(testData);
+  // The container is the wrapper component in which the tested component is rendered
+  renderSearchResults(testData);
 
-  expect(container.firstChild).toBeNull();
+  const message = screen.getByRole("paragraph");
+
+  expect(message).toHaveTextContent(
+    "Aucun résultat ne correspond à votre recherche",
+  );
 });
 
 test("it shows Skeleton Cards when data prop is an empty array and isLoading prop is true. The number of skeletons is equal to the PAGE_SIZE ", () => {

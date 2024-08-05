@@ -5,6 +5,7 @@ import { ReactElement } from "react";
 
 const handleChange = jest.fn();
 
+// Recommended approach for setting up user events + rendering a component
 function setup(jsx: ReactElement) {
   return {
     user: userEvent.setup(),

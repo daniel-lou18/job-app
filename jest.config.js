@@ -9,8 +9,12 @@ const createJestConfig = nextJest({
 /** @type {import('jest').Config} */
 const config = {
   // Add more setup options before each test is run
+  setupFiles: ["./jest.polyfills.js"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   testEnvironment: "jest-environment-jsdom",
+  testEnvironmentOptions: {
+    customExportConditions: [""],
+  },
   preset: "ts-jest",
 };
 

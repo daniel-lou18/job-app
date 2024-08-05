@@ -40,6 +40,7 @@ export function useJobs() {
     query,
     handleQuery,
     page,
+    jobs,
     filteredJobs,
     paginatedJobs,
     handleLoadMore,

@@ -5,6 +5,7 @@ import { useJobsFilter } from "@/hooks/useJobsFilter";
 import data from "@/utils/data.json";
 import { ReactElement } from "react";
 
+// Recommended approach for setting up user events + rendering a component
 function setup(jsx: ReactElement) {
   return {
     user: userEvent.setup(),
@@ -13,6 +14,7 @@ function setup(jsx: ReactElement) {
 }
 
 function MockParentComponent() {
+  // We can use the 'real' custom hook inside the mocked parent component
   const { query, handleQuery } = useJobsFilter(data.slice(0, 3));
 
   return <SearchInput value={query} onChange={handleQuery} />;

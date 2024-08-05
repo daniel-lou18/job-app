@@ -4,7 +4,7 @@ import SearchInput from "./SearchInput";
 import SearchResults from "./SearchResults";
 import Overlay from "../ui/Overlay";
 import PageTitle from "../ui/Heading";
-import { PAGE_SIZE, TOTAL_ITEMS } from "@/utils/constants";
+import { PAGE_SIZE } from "@/utils/constants";
 import Button from "../ui/Button";
 import { useJobs } from "@/hooks/useJobs";
 import Container from "../ui/Container";
@@ -17,6 +17,7 @@ export default function Search() {
     query,
     handleQuery,
     page,
+    jobs,
     filteredJobs,
     paginatedJobs,
     handleLoadMore,
@@ -26,6 +27,8 @@ export default function Search() {
 
   if (!isLoading && error) {
     renderedContent = <Error errorMessage={error} />;
+  } else if (!isLoading && !jobs?.length) {
+    renderedContent = <Error errorMessage="Aucune offre d'emploi à afficher" />;
   } else {
     renderedContent = (
       <>
@@ -44,7 +47,7 @@ export default function Search() {
 
   return (
     <>
-      <Container className="sticky top-12 z-20 flex flex-col items-center gap-6 bg-gray-100/80 py-10 backdrop-blur-md">
+      <Container className="sticky top-12 z-20 flex flex-col items-center gap-6 bg-gray-100/80 py-10 backdrop-blur-lg">
         <PageTitle>Trouver un job dans la tech</PageTitle>
         <SearchInput
           placeholder="Rechercher par job, ville ou entreprise"
