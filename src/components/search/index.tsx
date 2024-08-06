@@ -28,7 +28,7 @@ export default function Search() {
   if (!isLoading && error) {
     renderedContent = <Error errorMessage={error} />;
   } else if (!isLoading && !jobs?.length) {
-    renderedContent = <Error errorMessage="Aucune offre d'emploi à afficher" />;
+    renderedContent = null;
   } else {
     renderedContent = (
       <>
@@ -55,7 +55,7 @@ export default function Search() {
           onChange={handleQuery}
         />
       </Container>
-      <Container className="relative mt-4 flex min-h-screen w-full flex-1 flex-col items-center px-4 pb-12 pt-6 md:px-24">
+      <Container className="relative flex min-h-screen w-full flex-1 flex-col items-center px-4 py-12 md:px-24">
         {renderedContent}
       </Container>
     </>

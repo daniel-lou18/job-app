@@ -7,8 +7,11 @@ import { handleServiceError } from "./handleServiceError";
 
 const jobService = (apiClient: IApiClient) => ({
   getJobs: async (): Promise<Job[]> => {
+    // Simulate the fetching delay
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     try {
-      const res = await apiClient.get<Job[]>("/data/data.json");
+      const res = await apiClient.get<Job[]>("/api/jobs");
       return res.data;
     } catch (err: unknown) {
       throw handleServiceError(err);
@@ -16,4 +19,5 @@ const jobService = (apiClient: IApiClient) => ({
   },
 });
 
+// We inject the axiosClient into the jobService function
 export const { getJobs } = jobService(axiosClient);

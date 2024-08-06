@@ -1,5 +1,7 @@
 import { AxiosError } from "axios";
 
+// Differentiate between HTTP errors and network/connection errors
+
 export function handleServiceError(err: unknown) {
   if (err instanceof AxiosError) {
     if (err.response) {

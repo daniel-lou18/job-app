@@ -1,10 +1,10 @@
 import { PAGE_SIZE } from "@/utils/constants";
 import testData from "@/utils/data.json";
 import { render, screen } from "@testing-library/react";
+import { useJobs } from "@/hooks/useJobs";
 
-// We have to mock the useJobs hook and provide return values in order for the Search component to be tested correctly and realistically
+// Mock the useJobs hook and provide return values in order for the Search component to be tested correctly and realistically
 jest.mock("../../../hooks/useJobs");
-const mockUseJobs = jest.requireMock("../../../hooks/useJobs");
 const mockReturnValue = {
   isLoading: false,
   error: "",
@@ -17,15 +17,18 @@ const mockReturnValue = {
   handleLoadMore: jest.fn(),
 };
 
+// Tell TS explicitly what the type is of the mocked function
+const mockedUseJobs = useJobs as jest.MockedFunction<typeof useJobs>;
+
 beforeEach(() => jest.clearAllMocks());
 
 async function renderSearch() {
   const { default: Search } = await import("../index");
-  render(<Search />);
+  return render(<Search />);
 }
 
 test("it shows a page title, an input field and 3 job cards", async () => {
-  mockUseJobs.useJobs.mockReturnValue({
+  mockedUseJobs.mockReturnValue({
     ...mockReturnValue,
     jobs: testData.slice(0, 3),
     filteredJobs: testData.slice(0, 3),
@@ -44,7 +47,7 @@ test("it shows a page title, an input field and 3 job cards", async () => {
 });
 
 test("it shows a page title, an input field and 50 job cards", async () => {
-  mockUseJobs.useJobs.mockReturnValue({
+  mockedUseJobs.mockReturnValue({
     ...mockReturnValue,
     jobs: testData.slice(0, 50),
     filteredJobs: testData.slice(0, 50),
@@ -63,19 +66,20 @@ test("it shows a page title, an input field and 50 job cards", async () => {
 });
 
 test("it shows skeleton cards on loading state. The amount of skeleton cards is equal to PAGE_SIZE", async () => {
-  mockUseJobs.useJobs.mockReturnValue({
+  mockedUseJobs.mockReturnValue({
     ...mockReturnValue,
     isLoading: true,
   });
 
   await renderSearch();
 
-  const jobCards = await screen.findAllByRole("article");
-  expect(jobCards).toHaveLength(PAGE_SIZE);
+  const skeletonCards = await screen.findAllByRole("article");
+
+  expect(skeletonCards).toHaveLength(PAGE_SIZE);
 });
 
 test("it shows an error message on error state", async () => {
-  mockUseJobs.useJobs.mockReturnValue({
+  mockedUseJobs.mockReturnValue({
     ...mockReturnValue,
     isLoading: false,
     error: "Could not fetch",
@@ -84,17 +88,19 @@ test("it shows an error message on error state", async () => {
   await renderSearch();
 
   const errorMessage = await screen.findByRole("paragraph");
+
   expect(errorMessage).toHaveTextContent("Could not fetch");
 });
 
-test("it shows an appropriate message when the fetched data is an empty array", async () => {
-  mockUseJobs.useJobs.mockReturnValue({
+test("it shows no job cards when the fetched data is an empty array", async () => {
+  mockedUseJobs.mockReturnValue({
     ...mockReturnValue,
     isLoading: false,
   });
 
   await renderSearch();
 
-  const message = await screen.findByRole("paragraph");
-  expect(message).toHaveTextContent("Aucune offre d'emploi à afficher");
+  const cards = screen.queryAllByRole("article");
+
+  expect(cards).toHaveLength(0);
 });

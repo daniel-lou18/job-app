@@ -20,7 +20,6 @@ export function useJobs() {
       try {
         setIsLoading(true);
         setError("");
-        await new Promise((resolve) => setTimeout(resolve, 1500));
         const jobs = await getJobs();
         setJobs(jobs);
       } catch (err: unknown) {
