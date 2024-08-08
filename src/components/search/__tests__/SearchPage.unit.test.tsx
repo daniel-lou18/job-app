@@ -1,10 +1,10 @@
 import { PAGE_SIZE } from "@/utils/constants";
 import testData from "@/utils/data.json";
 import { render, screen } from "@testing-library/react";
-import { useJobs } from "@/hooks/useJobs";
+import { useJobs } from "@/hooks/useJobsClient";
 
 // Mock the useJobs hook and provide return values in order for the Search component to be tested correctly and realistically
-jest.mock("../../../hooks/useJobs");
+jest.mock("../../../hooks/useJobsClient");
 const mockReturnValue = {
   isLoading: false,
   error: "",

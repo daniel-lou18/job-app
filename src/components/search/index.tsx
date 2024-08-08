@@ -6,7 +6,7 @@ import Overlay from "../ui/Overlay";
 import PageTitle from "../ui/Heading";
 import { PAGE_SIZE } from "@/utils/constants";
 import Button from "../ui/Button";
-import { useJobs } from "@/hooks/useJobs";
+import { useJobs } from "@/hooks/useJobsServer";
 import Container from "../ui/Container";
 import Error from "../ui/Error";
 

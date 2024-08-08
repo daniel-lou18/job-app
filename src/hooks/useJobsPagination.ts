@@ -13,10 +13,10 @@ export function useJobsPagination(
     [page, filteredJobs],
   );
 
-  const hasMoreData = page * PAGE_SIZE >= filteredJobs.length;
+  const hasNoMoreData = page * PAGE_SIZE >= filteredJobs.length;
 
   async function handleLoadMore() {
-    if (hasMoreData) return;
+    if (hasNoMoreData) return;
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setPage((prevState) => prevState + 1);

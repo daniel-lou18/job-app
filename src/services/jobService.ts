@@ -6,12 +6,13 @@ import { handleServiceError } from "./handleServiceError";
 // The IApiClient interface defines the contract for the expected apiClient.
 
 const jobService = (apiClient: IApiClient) => ({
-  getJobs: async (): Promise<Job[]> => {
+  getJobs: async (searchParams?: URLSearchParams): Promise<Job[]> => {
     // Simulate the fetching delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 750));
 
     try {
-      const res = await apiClient.get<Job[]>("/api/jobs");
+      const url = searchParams ? `/api/jobs?${searchParams}` : "/api/jobs";
+      const res = await apiClient.get<Job[]>(url);
       return res.data;
     } catch (err: unknown) {
       throw handleServiceError(err);

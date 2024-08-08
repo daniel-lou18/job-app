@@ -1,7 +1,10 @@
-import { NextResponse } from "next/server";
-import { Request } from "undici";
+import { NextRequest, NextResponse } from "next/server";
 import data from "@/utils/data.json";
+import { filterJobs } from "@/lib/utils";
 
-export async function GET(req: Request) {
-  return NextResponse.json(data, { status: 200 });
+export async function GET(req: NextRequest) {
+  const searchParams = req.nextUrl.searchParams;
+  const query = searchParams.get("q");
+  const result = query ? filterJobs(data, query) : data;
+  return NextResponse.json(result, { status: 200 });
 }
