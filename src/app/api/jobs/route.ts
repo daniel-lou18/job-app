@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import data from "@/utils/data.json";
+import data from "../../../../public/data/data.json";
 import { filterJobs } from "@/utils/helpers";
 
 export async function GET(req: NextRequest) {
