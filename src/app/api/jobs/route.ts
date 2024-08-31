@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import data from "@/utils/data.json";
-import { filterJobs } from "@/lib/utils";
+import { filterJobs } from "@/utils/helpers";
 
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;

@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { Job } from "@/types";
-import { filterJobs } from "@/lib/utils";
+import { filterJobs } from "@/utils/helpers";
 
 export function useJobsFilter(jobs: Job[]) {
   const [query, setQuery] = useState("");
