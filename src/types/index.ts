@@ -4,4 +4,5 @@ export type Job = {
   jobTitle: string;
   location: string;
   salary: string;
+  tags: string[];
 };
