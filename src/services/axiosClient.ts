@@ -4,7 +4,8 @@ import axios from "axios";
 // It is also possible to create a client with the fetch API instead of axios, as long as it adheres to the IApiClient interface
 
 const axiosClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
+  baseURL:
+    "/" || process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
   },
