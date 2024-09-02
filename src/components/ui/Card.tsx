@@ -4,7 +4,7 @@ import { PropsWithChildren, ReactElement } from "react";
 
 function Card({ children }: PropsWithChildren<{}>) {
   return (
-    <article className="relative grid w-full max-w-md gap-6 rounded-md border border-gray-200 bg-background p-6 transition-all hover:cursor-pointer hover:border-gray-400">
+    <article className="grid w-full max-w-md gap-6 rounded-md border border-gray-200 bg-background p-6 transition-all hover:cursor-pointer hover:border-gray-400">
       {children}
     </article>
   );
@@ -19,8 +19,15 @@ function CardTitle({ children }: PropsWithChildren<{}>) {
   );
 }
 
-function CardContent({ children }: PropsWithChildren<{}>) {
-  return <div className="grid gap-2 text-muted-foreground">{children}</div>;
+function CardContent({
+  children,
+  className,
+}: { className?: string } & PropsWithChildren<{}>) {
+  return (
+    <div className={cn("grid gap-2 text-muted-foreground", className)}>
+      {children}
+    </div>
+  );
 }
 
 function CardItem({
