@@ -16,13 +16,37 @@ export const formatTags = (tags: string[]) =>
     ? tags.slice(0, 1).join(", ")
     : tags.slice(0, 3).join(", ");
 
-export const calcMin = (jobs: Job[]) => {
-  const meanSalaries = jobs.map((job) => {
+const calcMeanSalaries = (jobs: Job[]) =>
+  jobs.map((job) => {
     const [str1, str2] = job.salary.split(" à ");
     const [num1] = str1.split("K");
     const [num2] = str2.split("K");
     const mean = (parseInt(num1) + parseInt(num2)) / 2;
     return mean;
   });
-  return meanSalaries;
+
+export const calcMeanSalary = (meanSalaries: number[]) => {
+  return parseFloat(
+    (
+      meanSalaries.reduce((acc: number, elem: number) => acc + elem, 0) /
+      meanSalaries.length
+    ).toFixed(1),
+  );
+};
+
+export const calcMinSalary = (meanSalaries: number[]) => {
+  return Math.min(...meanSalaries);
+};
+
+export const calcMaxSalary = (meanSalaries: number[]) => {
+  return Math.max(...meanSalaries);
+};
+
+export const calcSalaryData = (jobs: Job[]) => {
+  const meanSalaries = calcMeanSalaries(jobs);
+  return {
+    minSalary: calcMinSalary(meanSalaries),
+    maxSalary: calcMaxSalary(meanSalaries),
+    meanSalary: calcMeanSalary(meanSalaries),
+  };
 };

@@ -9,6 +9,7 @@ import Button from "../ui/Button";
 import { useJobs } from "@/hooks/useJobsServer";
 import Container from "../ui/Container";
 import Error from "../ui/Error";
+import Analytics from "../analytics";
 
 export default function Search() {
   const {
@@ -33,6 +34,7 @@ export default function Search() {
     renderedContent = (
       <>
         {isLoading && <Overlay />}
+        <Analytics data={paginatedJobs} />
         <SearchResults
           data={paginatedJobs}
           isLoading={isLoading}

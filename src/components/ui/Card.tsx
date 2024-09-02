@@ -1,20 +1,30 @@
 import { cn } from "@/lib/utils";
-import { Heart } from "lucide-react";
 import { PropsWithChildren, ReactElement } from "react";
 
-function Card({ children }: PropsWithChildren<{}>) {
+function Card({
+  children,
+  className,
+}: { className?: string } & PropsWithChildren<{}>) {
   return (
-    <article className="grid w-full max-w-md gap-6 rounded-md border border-gray-200 bg-background p-6 transition-all hover:cursor-pointer hover:border-gray-400">
+    <article
+      className={cn(
+        "grid w-full max-w-md gap-6 rounded-md border border-gray-200 bg-background p-6 transition-all hover:cursor-pointer hover:border-gray-400",
+        className,
+      )}
+    >
       {children}
     </article>
   );
 }
 
-function CardTitle({ children }: PropsWithChildren<{}>) {
+function CardTitle({
+  children,
+  icon,
+}: { icon?: ReactElement } & PropsWithChildren<{}>) {
   return (
     <div className="flex items-center justify-between">
       <h3 className="text-xl font-bold">{children}</h3>
-      <Heart className="h-6 w-6 text-muted-foreground" />
+      {icon}
     </div>
   );
 }

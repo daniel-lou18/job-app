@@ -1,5 +1,5 @@
 import { Job } from "@/types";
-import { Banknote, MapPin, Tag } from "lucide-react";
+import { Banknote, Heart, MapPin, Tag } from "lucide-react";
 import React from "react";
 import Card from "../ui/Card";
 import Button from "../ui/Button";
@@ -15,7 +15,9 @@ export default function JobCard({ data }: CardProps) {
 
   return (
     <Card>
-      <Card.Title>{formatJobTitle(jobTitle)}</Card.Title>
+      <Card.Title icon={<Heart className="h-6 w-6 text-muted-foreground" />}>
+        {formatJobTitle(jobTitle)}
+      </Card.Title>
       <Card.Content className="grid-cols-[1fr_auto]">
         <Container className="grid gap-2">
           <Card.Item className="mb-2 uppercase">{companyName}</Card.Item>

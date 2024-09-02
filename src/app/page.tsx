@@ -1,4 +1,3 @@
-import Card from "@/components/search/JobCard";
 import Search from "@/components/search";
 
 export default function Home() {
