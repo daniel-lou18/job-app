@@ -50,3 +50,15 @@ export const calcSalaryData = (jobs: Job[]) => {
     meanSalary: calcMeanSalary(meanSalaries),
   };
 };
+
+export const calcTagCount = (jobs: Job[]) => {
+  const tagTable = jobs.reduce((acc: { [key: string]: number }, job) => {
+    job.tags.forEach((tag) => {
+      if (acc[tag]) acc[tag] += 1;
+      else acc[tag] = 1;
+    });
+    return acc;
+  }, {});
+
+  return tagTable;
+};
