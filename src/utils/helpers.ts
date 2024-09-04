@@ -1,4 +1,4 @@
-import { Job } from "@/types";
+import { Job, LocationsChartConfigType, LocationsChartDataType } from "@/types";
 
 export const filterJobs = (jobs: Job[], query: string) =>
   jobs.filter(
@@ -51,14 +51,52 @@ export const calcSalaryData = (jobs: Job[]) => {
   };
 };
 
-export const calcTagCount = (jobs: Job[]) => {
-  const tagTable = jobs.reduce((acc: { [key: string]: number }, job) => {
+export const formatSalary = (salary: number) => `${salary.toLocaleString()}K €`;
+
+export const calcBarWidth = (salary: number, maxSalary: number) =>
+  (salary / maxSalary) * 100;
+
+export const calcTagCount = (jobs: Job[]) =>
+  jobs.reduce<Record<string, number>>((acc, job) => {
     job.tags.forEach((tag) => {
-      if (acc[tag]) acc[tag] += 1;
-      else acc[tag] = 1;
+      if (acc[tag]) {
+        acc[tag] += 1;
+      } else {
+        acc[tag] = 1;
+      }
     });
     return acc;
   }, {});
 
-  return tagTable;
-};
+export const calcLocationsData = (jobs: Job[]) =>
+  jobs
+    .reduce<LocationsChartDataType>((acc, job) => {
+      const idx = acc.findIndex((elem) => elem.location === job.location);
+      if (idx > -1) {
+        acc[idx].count += 1;
+      } else {
+        acc.push({
+          location: job.location,
+          count: 1,
+          fill: `var(--color-${job.location})`,
+        });
+      }
+      return acc;
+    }, [])
+    .sort((a, b) => b.count - a.count);
+
+export const generateChartConfig = (locationsData: LocationsChartDataType) =>
+  locationsData.reduce<LocationsChartConfigType>(
+    (acc, location, idx) => ({
+      ...acc,
+      [location.location]: {
+        label: location.location,
+        color: `hsl(var(--chart-${idx > 4 ? "default" : idx + 1}))`,
+      },
+    }),
+    {
+      count: {
+        label: "Annonces",
+      },
+    },
+  );

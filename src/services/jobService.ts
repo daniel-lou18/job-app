@@ -7,9 +7,6 @@ import { handleServiceError } from "./handleServiceError";
 
 const jobService = (apiClient: IApiClient) => ({
   getJobs: async (searchParams?: URLSearchParams): Promise<Job[]> => {
-    // Simulate the fetching delay
-    await new Promise((resolve) => setTimeout(resolve, 750));
-
     try {
       const url = searchParams ? `/api/jobs?${searchParams}` : "/api/jobs";
       const res = await apiClient.get<Job[]>(url);

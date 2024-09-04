@@ -4,7 +4,7 @@ import { PropsWithChildren, ReactElement } from "react";
 function Card({
   children,
   className,
-}: { className?: string } & PropsWithChildren<{}>) {
+}: PropsWithChildren<{ className?: string }>) {
   return (
     <article
       className={cn(
@@ -20,10 +20,11 @@ function Card({
 function CardTitle({
   children,
   icon,
-}: { icon?: ReactElement } & PropsWithChildren<{}>) {
+  className,
+}: PropsWithChildren<{ icon?: ReactElement; className?: string }>) {
   return (
     <div className="flex items-center justify-between">
-      <h3 className="text-xl font-bold">{children}</h3>
+      <h3 className={cn("text-xl font-bold", className)}>{children}</h3>
       {icon}
     </div>
   );
@@ -32,7 +33,7 @@ function CardTitle({
 function CardContent({
   children,
   className,
-}: { className?: string } & PropsWithChildren<{}>) {
+}: PropsWithChildren<{ className?: string }>) {
   return (
     <div className={cn("grid gap-2 text-muted-foreground", className)}>
       {children}
@@ -44,10 +45,7 @@ function CardItem({
   children,
   className,
   icon,
-}: {
-  className?: string;
-  icon?: ReactElement;
-} & PropsWithChildren<{}>) {
+}: PropsWithChildren<{ className?: string; icon?: ReactElement }>) {
   return (
     <div className={cn("flex items-center gap-2", className)}>
       {icon}

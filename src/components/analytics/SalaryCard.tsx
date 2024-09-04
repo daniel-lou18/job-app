@@ -1,9 +1,6 @@
 import React from "react";
 import Card from "../ui/Card";
-
-const formatSalary = (salary: number) => `${salary.toLocaleString()}`;
-const calculateBarWidth = (salary: number, maxSalary: number) =>
-  (salary / maxSalary) * 100;
+import { calcBarWidth, formatSalary } from "@/utils/helpers";
 
 type SalaryCardProps = {
   data: { minSalary: number; maxSalary: number; meanSalary: number };
@@ -13,8 +10,8 @@ const SalaryCard = ({
   data: { minSalary, maxSalary, meanSalary },
 }: SalaryCardProps) => {
   return (
-    <Card>
-      <Card.Title>Salary Range</Card.Title>
+    <Card className="hidden flex-col justify-start md:flex">
+      <Card.Title className="text-lg">Fourchette salariale</Card.Title>
       <Card.Content>
         <div className="space-y-6">
           <div className="relative pt-1">
@@ -32,7 +29,7 @@ const SalaryCard = ({
             </div>
             <div className="mb-4 flex h-2 overflow-hidden rounded bg-blue-200 text-xs">
               <div
-                style={{ width: `${calculateBarWidth(minSalary, maxSalary)}%` }}
+                style={{ width: `${calcBarWidth(minSalary, maxSalary)}%` }}
                 className="flex flex-col justify-center whitespace-nowrap bg-blue-500 text-center text-white shadow-none"
               ></div>
             </div>
@@ -42,7 +39,7 @@ const SalaryCard = ({
             <div className="mb-2 flex items-center justify-between">
               <div>
                 <span className="inline-block rounded-full bg-yellow-200 px-2 py-1 text-xs font-semibold uppercase text-yellow-600">
-                  Avg
+                  Moy
                 </span>
               </div>
               <div className="text-right">
@@ -54,7 +51,7 @@ const SalaryCard = ({
             <div className="mb-4 flex h-2 overflow-hidden rounded bg-yellow-200 text-xs">
               <div
                 style={{
-                  width: `${calculateBarWidth(meanSalary, maxSalary)}%`,
+                  width: `${calcBarWidth(meanSalary, maxSalary)}%`,
                 }}
                 className="flex flex-col justify-center whitespace-nowrap bg-yellow-500 text-center text-white shadow-none"
               ></div>
@@ -75,10 +72,7 @@ const SalaryCard = ({
               </div>
             </div>
             <div className="mb-4 flex h-2 overflow-hidden rounded bg-green-200 text-xs">
-              <div
-                style={{ width: "100%" }}
-                className="flex flex-col justify-center whitespace-nowrap bg-green-500 text-center text-white shadow-none"
-              ></div>
+              <div className="flex w-full flex-col justify-center whitespace-nowrap bg-green-500 text-center text-white shadow-none"></div>
             </div>
           </div>
         </div>

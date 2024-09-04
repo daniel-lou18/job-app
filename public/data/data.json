@@ -13,7 +13,7 @@
     "jobTitle": "Data Scientist",
     "location": "Lyon",
     "salary": "50K à 70K €",
-    "tags": ["Data Science", "Machine Learning", "Python", "SQL", "CDI"]
+    "tags": ["Data Science", "Machine Learning", "Python", "SQL", "Freelance"]
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "jobTitle": "Ingénieur DevOps",
     "location": "Nantes",
     "salary": "40K à 55K €",
-    "tags": ["DevOps", "CI/CD", "Docker", "Kubernetes", "CDI"]
+    "tags": ["DevOps", "CI/CD", "Docker", "Kubernetes", "Freelance"]
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "jobTitle": "Expert en Cybersécurité",
     "location": "Toulouse",
     "salary": "55K à 75K €",
-    "tags": ["Cybersécurité", "Sécurité Réseau", "Certifications", "CDI"]
+    "tags": ["Cybersécurité", "Sécurité Réseau", "Remote", "Freelance"]
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "jobTitle": "Ingénieur en Intelligence Artificielle",
     "location": "Bordeaux",
     "salary": "60K à 80K €",
-    "tags": ["IA", "Machine Learning", "Python", "TensorFlow", "CDI"]
+    "tags": ["IA", "Machine Learning", "Python", "TensorFlow", "Freelance"]
   },
   {
     "id": 6,
@@ -61,7 +61,7 @@
     "jobTitle": "Chef de Projet IT",
     "location": "Strasbourg",
     "salary": "50K à 70K €",
-    "tags": ["Gestion de Projet", "IT", "Leadership", "CDI"]
+    "tags": ["Gestion de Projet", "IT", "Remote", "Freelance"]
   },
   {
     "id": 9,
