@@ -16,7 +16,9 @@ export function Toggle({ onToggle }: { onToggle: () => void }) {
         checked={isChecked}
         onCheckedChange={handleCheckChange}
       />
-      <Label htmlFor="analytics-mode">Afficher détails de recherche</Label>
+      <Label htmlFor="analytics-mode" className="hover:cursor-pointer">
+        Afficher détails de recherche
+      </Label>
     </div>
   );
 }

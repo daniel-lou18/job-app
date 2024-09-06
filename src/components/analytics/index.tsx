@@ -10,17 +10,19 @@ import {
   generateChartConfig,
 } from "@/utils/helpers";
 
-type AnalyticsProps = { data: Job[]; visible: boolean };
+type AnalyticsProps = { data: Job[]; isLoading: boolean; visible: boolean };
 
-function Analytics({ data, visible }: AnalyticsProps) {
+function Analytics({ data, isLoading, visible }: AnalyticsProps) {
   const { minSalary, maxSalary, meanSalary } = calcSalaryData(data);
   const jobTagsTable = calcTagCount(data);
   const locationsChartData = calcLocationsData(data);
   const chartConfig = generateChartConfig(locationsChartData);
 
+  if (!data?.length && !isLoading) return null;
+
   return (
     <Container
-      className={`grid grid-cols-2 gap-6 bg-gray-100/80 px-10 pb-10 pt-4 md:grid-cols-3 xl:grid-cols-4 ${visible ? "max-h-screen opacity-100" : "max-h-0 opacity-0"} transition-all duration-100`}
+      className={`grid grid-cols-2 gap-6 bg-gray-100 px-10 pb-10 pt-4 md:grid-cols-3 xl:grid-cols-4 ${visible ? "max-h-screen opacity-100" : "max-h-0 opacity-0"} transition-all duration-100`}
     >
       <SalaryCard data={{ meanSalary, minSalary, maxSalary }} />
       <TagsCard data={jobTagsTable} />

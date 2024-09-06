@@ -51,7 +51,8 @@ export const calcSalaryData = (jobs: Job[]) => {
   };
 };
 
-export const formatSalary = (salary: number) => `${salary.toLocaleString()}K €`;
+export const formatSalary = (salary: number) =>
+  `${salary === Infinity || salary === -Infinity || Number.isNaN(salary) ? "... " : salary.toLocaleString()}K €`;
 
 export const calcBarWidth = (salary: number, maxSalary: number) =>
   (salary / maxSalary) * 100;
