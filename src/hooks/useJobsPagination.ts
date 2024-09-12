@@ -1,6 +1,12 @@
 import { Job } from "@/types";
 import { PAGE_SIZE } from "@/utils/constants";
-import { Dispatch, SetStateAction, useMemo, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 
 export function useJobsPagination(
   filteredJobs: Job[],
@@ -15,13 +21,13 @@ export function useJobsPagination(
 
   const hasNoMoreData = page * PAGE_SIZE >= filteredJobs.length;
 
-  async function handleLoadMore() {
+  const handleLoadMore = useCallback(async () => {
     if (hasNoMoreData) return;
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 500));
     setPage((prevState) => prevState + 1);
     setIsLoading(false);
-  }
+  }, [setIsLoading, hasNoMoreData]);
 
   return { page, paginatedJobs, handleLoadMore };
 }

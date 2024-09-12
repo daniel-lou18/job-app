@@ -20,7 +20,6 @@ export default function Search() {
     query,
     handleQuery,
     page,
-    jobs,
     filteredJobs,
     paginatedJobs,
     handleLoadMore,
@@ -48,13 +47,13 @@ export default function Search() {
   } else {
     renderedContent = (
       <>
-        {isLoading && <Overlay />}
         <Analytics
           data={paginatedJobs}
           isLoading={isLoading}
           visible={isVisible && isAtTop}
         />
         <Container className="relative flex min-h-screen w-full flex-1 flex-col items-center px-4 py-12 md:px-24">
+          {isLoading && <Overlay />}
           <SearchResults
             data={paginatedJobs}
             isLoading={isLoading}
