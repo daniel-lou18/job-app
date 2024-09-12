@@ -7,9 +7,10 @@ const jobData = {
   jobTitle: "Développeur Full Stack",
   location: "Paris",
   salary: "45K à 60K €",
+  tags: ["Full Stack", "JavaScript", "React", "Node.js", "CDI", "Remote"],
 };
 
-test("it shows one card with a companyName, a jobTitle, a location and a salary", () => {
+test("it shows one card with a companyName, a jobTitle, a location, a salary, and 5 tags", () => {
   render(<JobCard data={jobData} />);
 
   const card = screen.getByRole("article");
@@ -18,8 +19,9 @@ test("it shows one card with a companyName, a jobTitle, a location and a salary"
 
   expect(card).toBeInTheDocument();
   expect(title).toHaveTextContent("Développeur Full Stack");
-  expect(paragraphs).toHaveLength(3);
+  expect(paragraphs).toHaveLength(4);
   expect(paragraphs[0]).toHaveTextContent("TechVision");
   expect(paragraphs[1]).toHaveTextContent("Paris");
   expect(paragraphs[2]).toHaveTextContent("45K à 60K €");
+  expect(paragraphs[3].textContent).toContain("Full Stack");
 });

@@ -1,17 +1,16 @@
 import { PAGE_SIZE } from "@/utils/constants";
 import testData from "@/utils/data.json";
-import { render, screen } from "@testing-library/react";
-import { useJobs } from "@/hooks/useJobsClient";
+import { render, screen, within } from "@testing-library/react";
+import { useJobs } from "@/hooks/useJobsServer";
 
 // Mock the useJobs hook and provide return values in order for the Search component to be tested correctly and realistically
-jest.mock("../../../hooks/useJobsClient");
+jest.mock("../../../hooks/useJobsServer");
 const mockReturnValue = {
   isLoading: false,
   error: "",
   query: "",
   handleQuery: jest.fn(),
   page: 1,
-  jobs: [],
   filteredJobs: [],
   paginatedJobs: [],
   handleLoadMore: jest.fn(),
@@ -30,7 +29,6 @@ async function renderSearch() {
 test("it shows a page title, an input field and 3 job cards", async () => {
   mockedUseJobs.mockReturnValue({
     ...mockReturnValue,
-    jobs: testData.slice(0, 3),
     filteredJobs: testData.slice(0, 3),
     paginatedJobs: testData.slice(0, 3),
   });
@@ -46,26 +44,28 @@ test("it shows a page title, an input field and 3 job cards", async () => {
   expect(jobCards).toHaveLength(3);
 });
 
-test("it shows a page title, an input field and 50 job cards", async () => {
+test("it shows a page title, an input field and 30 job cards", async () => {
   mockedUseJobs.mockReturnValue({
     ...mockReturnValue,
-    jobs: testData.slice(0, 50),
-    filteredJobs: testData.slice(0, 50),
-    paginatedJobs: testData.slice(0, 50),
+    filteredJobs: testData.slice(0, 30),
+    paginatedJobs: testData.slice(0, 30),
   });
 
   await renderSearch();
 
   const titles = await screen.findAllByRole("heading");
   const inputField = await screen.findByRole("textbox", { name: /search/i });
-  const jobCards = await screen.findAllByRole("article");
+  const allCards = await screen.findAllByRole("article");
+  const jobCards = allCards.filter((card) =>
+    within(card).queryByText("Postuler"),
+  );
 
   expect(titles[0]).toHaveTextContent("Trouver un job dans la tech");
   expect(inputField).toHaveValue("");
-  expect(jobCards).toHaveLength(50);
+  expect(jobCards).toHaveLength(30);
 });
 
-test("it shows skeleton cards on loading state. The amount of skeleton cards is equal to PAGE_SIZE", async () => {
+test("it shows skeleton cards on loading state. The amount of skeleton cards is equal to PAGE_SIZE + 3", async () => {
   mockedUseJobs.mockReturnValue({
     ...mockReturnValue,
     isLoading: true,
@@ -75,7 +75,7 @@ test("it shows skeleton cards on loading state. The amount of skeleton cards is 
 
   const skeletonCards = await screen.findAllByRole("article");
 
-  expect(skeletonCards).toHaveLength(PAGE_SIZE);
+  expect(skeletonCards).toHaveLength(PAGE_SIZE + 3);
 });
 
 test("it shows an error message on error state", async () => {

@@ -4,349 +4,399 @@
     "companyName": "TechVision",
     "jobTitle": "Développeur Full Stack",
     "location": "Paris",
-    "salary": "45K à 60K €"
+    "salary": "45K à 60K €",
+    "tags": ["Full Stack", "JavaScript", "React", "Node.js", "CDI", "Remote"]
   },
   {
     "id": 2,
     "companyName": "DataSphere",
     "jobTitle": "Data Scientist",
     "location": "Lyon",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["Data Science", "Machine Learning", "Python", "SQL", "Freelance"]
   },
   {
     "id": 3,
     "companyName": "CloudNine",
     "jobTitle": "Ingénieur DevOps",
     "location": "Nantes",
-    "salary": "40K à 55K €"
+    "salary": "40K à 55K €",
+    "tags": ["DevOps", "CI/CD", "Docker", "Kubernetes", "Freelance"]
   },
   {
     "id": 4,
     "companyName": "CyberShield",
     "jobTitle": "Expert en Cybersécurité",
     "location": "Toulouse",
-    "salary": "55K à 75K €"
+    "salary": "55K à 75K €",
+    "tags": ["Cybersécurité", "Sécurité Réseau", "Remote", "Freelance"]
   },
   {
     "id": 5,
     "companyName": "AIFuture",
     "jobTitle": "Ingénieur en Intelligence Artificielle",
     "location": "Bordeaux",
-    "salary": "60K à 80K €"
+    "salary": "60K à 80K €",
+    "tags": ["IA", "Machine Learning", "Python", "TensorFlow", "Freelance"]
   },
   {
     "id": 6,
     "companyName": "MobileWave",
     "jobTitle": "Développeur Mobile iOS",
     "location": "Marseille",
-    "salary": "40K à 55K €"
+    "salary": "40K à 55K €",
+    "tags": ["iOS", "Swift", "Développement Mobile", "CDI"]
   },
   {
     "id": 7,
     "companyName": "WebMasters",
     "jobTitle": "Développeur Front-end",
     "location": "Lille",
-    "salary": "35K à 50K €"
+    "salary": "35K à 50K €",
+    "tags": ["Front-end", "JavaScript", "React", "CSS", "CDI"]
   },
   {
     "id": 8,
     "companyName": "InnoTech",
     "jobTitle": "Chef de Projet IT",
     "location": "Strasbourg",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["Gestion de Projet", "IT", "Remote", "Freelance"]
   },
   {
     "id": 9,
     "companyName": "BigQuery",
     "jobTitle": "Analyste de Données",
     "location": "Rennes",
-    "salary": "40K à 60K €"
+    "salary": "40K à 60K €",
+    "tags": ["Analyse de Données", "SQL", "Excel", "CDI"]
   },
   {
     "id": 10,
     "companyName": "SoftSolutions",
     "jobTitle": "Architecte Logiciel",
     "location": "Nice",
-    "salary": "65K à 85K €"
+    "salary": "65K à 85K €",
+    "tags": ["Architecture Logicielle", "Design Patterns", "Java", "CDI"]
   },
   {
     "id": 11,
     "companyName": "CloudPioneer",
     "jobTitle": "Ingénieur Cloud",
     "location": "Montpellier",
-    "salary": "45K à 65K €"
+    "salary": "45K à 65K €",
+    "tags": ["Cloud", "AWS", "Azure", "DevOps", "CDI"]
   },
   {
     "id": 12,
     "companyName": "SecureNet",
     "jobTitle": "Analyste en Sécurité",
     "location": "Grenoble",
-    "salary": "40K à 60K €"
+    "salary": "40K à 60K €",
+    "tags": ["Sécurité", "Analyse de Sécurité", "Certifications", "CDI"]
   },
   {
     "id": 13,
     "companyName": "RoboTech",
     "jobTitle": "Ingénieur en Robotique",
     "location": "Toulouse",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["Robotique", "IA", "C++", "Automatisation", "CDI"]
   },
   {
     "id": 14,
     "companyName": "DataViz",
     "jobTitle": "Spécialiste en Visualisation de Données",
     "location": "Lyon",
-    "salary": "45K à 65K €"
+    "salary": "45K à 65K €",
+    "tags": ["Visualisation de Données", "Tableau", "Power BI", "CDI"]
   },
   {
     "id": 15,
     "companyName": "AIHealth",
     "jobTitle": "Chercheur en IA pour la Santé",
     "location": "Paris",
-    "salary": "60K à 80K €"
+    "salary": "60K à 80K €",
+    "tags": ["IA", "Santé", "Machine Learning", "Recherche", "CDI"]
   },
   {
     "id": 16,
     "companyName": "BlockChainInno",
     "jobTitle": "Développeur Blockchain",
     "location": "Bordeaux",
-    "salary": "55K à 75K €"
+    "salary": "55K à 75K €",
+    "tags": ["Blockchain", "Cryptomonnaies", "Smart Contracts", "CDI"]
   },
   {
     "id": 17,
     "companyName": "SmartCity",
     "jobTitle": "Ingénieur IoT",
     "location": "Nantes",
-    "salary": "45K à 65K €"
+    "salary": "45K à 65K €",
+    "tags": ["IoT", "Développement Embarqué", "C++", "CDI"]
   },
   {
     "id": 18,
     "companyName": "VRWorld",
     "jobTitle": "Développeur de Réalité Virtuelle",
     "location": "Marseille",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["Réalité Virtuelle", "Unity", "C#", "CDI"]
   },
   {
     "id": 19,
     "companyName": "CodeCrafters",
     "jobTitle": "Développeur Back-end",
     "location": "Lille",
-    "salary": "40K à 60K €"
+    "salary": "40K à 60K €",
+    "tags": ["Back-end", "Java", "Spring", "CDI"]
   },
   {
     "id": 20,
     "companyName": "TestMasters",
     "jobTitle": "Ingénieur QA",
     "location": "Strasbourg",
-    "salary": "35K à 55K €"
+    "salary": "35K à 55K €",
+    "tags": ["QA", "Tests Automatisés", "Selenium", "CDI"]
   },
   {
     "id": 21,
     "companyName": "UXPro",
     "jobTitle": "Designer UX/UI",
     "location": "Nice",
-    "salary": "40K à 60K €"
+    "salary": "40K à 60K €",
+    "tags": ["UX/UI", "Design", "Wireframing", "CDI"]
   },
   {
     "id": 22,
     "companyName": "AIVoice",
     "jobTitle": "Ingénieur en Traitement du Langage Naturel",
     "location": "Paris",
-    "salary": "55K à 75K €"
+    "salary": "55K à 75K €",
+    "tags": ["NLP", "IA", "Python", "Recherche", "CDI"]
   },
   {
     "id": 23,
     "companyName": "DataWarehouse",
     "jobTitle": "Architecte de Données",
     "location": "Lyon",
-    "salary": "60K à 80K €"
+    "salary": "60K à 80K €",
+    "tags": ["Architecture de Données", "SQL", "Big Data", "CDI"]
   },
   {
     "id": 24,
     "companyName": "CloudSecure",
     "jobTitle": "Spécialiste en Sécurité Cloud",
     "location": "Toulouse",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["Sécurité Cloud", "AWS", "Azure", "CDI"]
   },
   {
     "id": 25,
     "companyName": "AIVision",
     "jobTitle": "Ingénieur en Vision par Ordinateur",
     "location": "Grenoble",
-    "salary": "55K à 75K €"
+    "salary": "55K à 75K €",
+    "tags": ["Vision par Ordinateur", "IA", "OpenCV", "CDI"]
   },
   {
     "id": 26,
     "companyName": "BigDataInsights",
     "jobTitle": "Ingénieur Big Data",
     "location": "Bordeaux",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["Big Data", "Hadoop", "Spark", "CDI"]
   },
   {
     "id": 27,
     "companyName": "SmartHome",
     "jobTitle": "Développeur Embarqué",
     "location": "Rennes",
-    "salary": "40K à 60K €"
+    "salary": "40K à 60K €",
+    "tags": ["Embarqué", "C", "Systèmes Temps Réel", "CDI"]
   },
   {
     "id": 28,
     "companyName": "AIEthics",
     "jobTitle": "Consultant en Éthique de l'IA",
     "location": "Paris",
-    "salary": "55K à 75K €"
+    "salary": "55K à 75K €",
+    "tags": ["Éthique de l'IA", "Consulting", "Recherche", "CDI"]
   },
   {
     "id": 29,
     "companyName": "CloudOps",
     "jobTitle": "Ingénieur en Fiabilité de Site",
     "location": "Nantes",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["Fiabilité de Site", "Cloud", "DevOps", "CDI"]
   },
   {
     "id": 30,
     "companyName": "CyberTraining",
     "jobTitle": "Formateur en Cybersécurité",
     "location": "Lyon",
-    "salary": "45K à 65K €"
+    "salary": "45K à 65K €",
+    "tags": ["Cybersécurité", "Formation", "Certifications", "CDI"]
   },
   {
     "id": 31,
     "companyName": "DataPrivacy",
     "jobTitle": "Responsable de la Protection des Données",
     "location": "Lille",
-    "salary": "55K à 75K €"
+    "salary": "55K à 75K €",
+    "tags": ["Protection des Données", "RGPD", "Compliance", "CDI"]
   },
   {
     "id": 32,
     "companyName": "ARInnovate",
     "jobTitle": "Développeur de Réalité Augmentée",
     "location": "Marseille",
-    "salary": "45K à 65K €"
+    "salary": "45K à 65K €",
+    "tags": ["Réalité Augmentée", "Unity", "C#", "CDI"]
   },
   {
     "id": 33,
     "companyName": "QuantumTech",
     "jobTitle": "Chercheur en Informatique Quantique",
     "location": "Grenoble",
-    "salary": "65K à 85K €"
+    "salary": "65K à 85K €",
+    "tags": ["Informatique Quantique", "Recherche", "Python", "CDI"]
   },
   {
     "id": 34,
     "companyName": "AIMarketing",
     "jobTitle": "Spécialiste en IA pour le Marketing",
     "location": "Nice",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["IA", "Marketing", "Data Analysis", "CDI"]
   },
   {
     "id": 35,
     "companyName": "CloudMigrate",
     "jobTitle": "Consultant en Migration Cloud",
     "location": "Strasbourg",
-    "salary": "45K à 65K €"
+    "salary": "45K à 65K €",
+    "tags": ["Migration Cloud", "AWS", "Azure", "Consulting", "CDI"]
   },
   {
     "id": 36,
     "companyName": "BioTechAI",
     "jobTitle": "Data Scientist en Biotechnologie",
     "location": "Montpellier",
-    "salary": "55K à 75K €"
+    "salary": "55K à 75K €",
+    "tags": ["Data Science", "Biotechnologie", "Python", "CDI"]
   },
   {
     "id": 37,
     "companyName": "FinTechInno",
     "jobTitle": "Développeur FinTech",
     "location": "Paris",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["FinTech", "Java", "Blockchain", "CDI"]
   },
   {
     "id": 38,
     "companyName": "AIAgri",
     "jobTitle": "Ingénieur en IA pour l'Agriculture",
     "location": "Rennes",
-    "salary": "45K à 65K €"
+    "salary": "45K à 65K €",
+    "tags": ["IA", "Agriculture", "Machine Learning", "CDI"]
   },
   {
     "id": 39,
     "companyName": "CyberForensics",
     "jobTitle": "Analyste en Criminalistique Numérique",
     "location": "Lyon",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["Criminalistique", "Cybersécurité", "Analyse Forensic", "CDI"]
   },
   {
     "id": 40,
     "companyName": "DataGovernance",
     "jobTitle": "Responsable de la Gouvernance des Données",
     "location": "Nantes",
-    "salary": "55K à 75K €"
+    "salary": "55K à 75K €",
+    "tags": ["Gouvernance des Données", "Data Management", "Compliance", "CDI"]
   },
   {
     "id": 41,
     "companyName": "AIAutomotive",
     "jobTitle": "Ingénieur en IA pour l'Automobile",
     "location": "Toulouse",
-    "salary": "60K à 80K €"
+    "salary": "60K à 80K €",
+    "tags": ["IA", "Automobile", "Machine Learning", "CDI"]
   },
   {
     "id": 42,
     "companyName": "SmartEnergy",
     "jobTitle": "Développeur IoT pour l'Énergie",
     "location": "Grenoble",
-    "salary": "45K à 65K €"
+    "salary": "45K à 65K €",
+    "tags": ["IoT", "Énergie", "Développement Embarqué", "CDI"]
   },
   {
     "id": 43,
     "companyName": "MLOps",
     "jobTitle": "Ingénieur MLOps",
     "location": "Bordeaux",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["MLOps", "Machine Learning", "DevOps", "CDI"]
   },
   {
     "id": 44,
     "companyName": "EdTechAI",
     "jobTitle": "Spécialiste en IA pour l'Éducation",
     "location": "Lille",
-    "salary": "45K à 65K €"
+    "salary": "45K à 65K €",
+    "tags": ["IA", "Éducation", "Data Science", "CDI"]
   },
   {
     "id": 45,
     "companyName": "RetailTech",
     "jobTitle": "Data Analyst pour le Commerce",
     "location": "Nice",
-    "salary": "40K à 60K €"
+    "salary": "40K à 60K €",
+    "tags": ["Data Analysis", "Retail", "SQL", "CDI"]
   },
   {
     "id": 46,
     "companyName": "AIGaming",
     "jobTitle": "Développeur d'IA pour Jeux Vidéo",
     "location": "Lyon",
-    "salary": "50K à 70K €"
+    "salary": "50K à 70K €",
+    "tags": ["IA", "Jeux Vidéo", "Unity", "CDI"]
   },
   {
     "id": 47,
     "companyName": "CloudNative",
     "jobTitle": "Architecte Cloud Native",
     "location": "Paris",
-    "salary": "60K à 80K €"
+    "salary": "60K à 80K €",
+    "tags": ["Cloud Native", "Kubernetes", "AWS", "CDI"]
   },
   {
     "id": 48,
     "companyName": "HealthTechData",
     "jobTitle": "Ingénieur de Données en Santé",
     "location": "Marseille",
-    "salary": "55K à 75K €"
+    "salary": "55K à 75K €",
+    "tags": ["Santé", "Data Science", "Big Data", "CDI"]
   },
   {
     "id": 49,
     "companyName": "AIAssistant",
     "jobTitle": "Développeur d'Assistants Virtuels",
     "location": "Nantes",
-    "salary": "45K à 65K €"
+    "salary": "45K à 65K €",
+    "tags": ["Assistants Virtuels", "IA", "Python", "CDI"]
   },
   {
     "id": 50,
     "companyName": "TechStartup",
     "jobTitle": "Développeur Full Stack",
     "location": "Bordeaux",
-    "salary": "40K à 60K €"
+    "salary": "40K à 60K €",
+    "tags": ["Full Stack", "JavaScript", "React", "Node.js", "CDI"]
   }
 ]
