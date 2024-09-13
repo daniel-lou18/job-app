@@ -24,7 +24,7 @@ export function useJobsPagination(
   const handleLoadMore = useCallback(async () => {
     if (hasNoMoreData) return;
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 250));
     setPage((prevState) => prevState + 1);
     setIsLoading(false);
   }, [setIsLoading, hasNoMoreData]);

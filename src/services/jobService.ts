@@ -8,7 +8,7 @@ import { handleServiceError } from "./handleServiceError";
 const jobService = (apiClient: IApiClient) => ({
   getJobs: async (searchParams?: URLSearchParams): Promise<Job[]> => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 250));
       const url = searchParams ? `/api/jobs?${searchParams}` : "/api/jobs";
       const res = await apiClient.get<Job[]>(url);
       return res.data;

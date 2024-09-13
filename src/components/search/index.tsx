@@ -52,7 +52,10 @@ export default function Search() {
           isLoading={isLoading}
           visible={isVisible && isAtTop}
         />
-        <Container className="relative flex min-h-screen w-full flex-1 flex-col items-center px-4 py-12 md:px-24">
+        <Container
+          element="section"
+          className="relative mb-8 flex min-h-screen w-full flex-1 flex-col items-center px-4 py-12 md:px-24"
+        >
           {isLoading && <Overlay />}
           <SearchResults
             data={paginatedJobs}
@@ -69,7 +72,10 @@ export default function Search() {
 
   return (
     <>
-      <Container className="sticky top-12 z-20 flex flex-col items-center gap-6 bg-gray-100 py-8 backdrop-blur-lg">
+      <Container
+        element="section"
+        className="sticky top-12 z-20 flex flex-col items-center gap-6 bg-gray-100 py-8 backdrop-blur-lg"
+      >
         <PageTitle>Trouver un job dans la tech</PageTitle>
         <Container className="flex w-full justify-center gap-6">
           <SearchInput

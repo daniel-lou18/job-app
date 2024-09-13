@@ -14,7 +14,7 @@ export default function SearchResults({
     return <p>Aucun résultat ne correspond à votre recherche</p>;
 
   return (
-    <section className="mb-8 w-full">
+    <div className="mb-8 w-full">
       <h4 className="mb-6 text-xl font-bold">
         Jobs
         {count > 0 && (
@@ -34,6 +34,6 @@ export default function SearchResults({
           <JobCard key={job.id} data={job} />
         ))}
       </div>
-    </section>
+    </div>
   );
 }
