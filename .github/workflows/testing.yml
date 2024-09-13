@@ -22,7 +22,10 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: npm test
+        run: npm test -- --ci --detectOpenHandles
+        env:
+          CI: true
+        timeout-minutes: 2
 
       - name: Build project
         run: npm run build
