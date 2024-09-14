@@ -22,4 +22,10 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: npm test
+        run: |
+          npm test -- --ci --detectOpenHandles
+          echo "Tests completed, waiting to see what happens..."
+          sleep 30
+          echo "30 seconds after tests completed"
+        env:
+          CI: true
