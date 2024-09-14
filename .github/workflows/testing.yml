@@ -22,10 +22,12 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: |
-          npm test -- --ci --detectOpenHandles
-          echo "Tests completed, waiting to see what happens..."
-          sleep 30
-          echo "30 seconds after tests completed"
-        env:
-          CI: true
+        run: npm test
+
+      - name: Tests completed
+        run: echo "Tests successfully completed"
+        if: ${{ success() }}
+
+      - name: Tests failed
+        run: echo "Tests failed"
+        if: ${{ failure() }}
