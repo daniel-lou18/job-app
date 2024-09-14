@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import Search from "..";
 import { getJobs } from "@/services/jobService";
 import data from "@/utils/data.json";
@@ -18,8 +18,11 @@ test("it shows the skeleton cards on loading state and displays 3 job cards when
 
   render(<Search />);
 
+  const sections = screen.getAllByRole("region");
+  const searchContainer = sections[2];
+
   // Check if skeleton cards are displayed on loading state
-  const skeletonCards = screen.getAllByRole("article");
+  const skeletonCards = within(searchContainer).getAllByRole("article");
   expect(skeletonCards).toHaveLength(PAGE_SIZE);
   expect(skeletonCards[0].querySelector("h3")).toBeNull();
   expect(screen.queryAllByRole("paragraph")).toHaveLength(0);
@@ -32,16 +35,17 @@ test("it shows the skeleton cards on loading state and displays 3 job cards when
 
   await waitFor(() => {
     // For complete coverage
-    const nonSkeletonCards = screen.queryAllByRole("article");
-    expect(nonSkeletonCards).toHaveLength(3);
-    expect(nonSkeletonCards[0].querySelector("h3")).toHaveTextContent(
+    const cardsLoadingCompleted =
+      within(searchContainer).queryAllByRole("article");
+    expect(cardsLoadingCompleted).toHaveLength(3);
+    expect(cardsLoadingCompleted[0].querySelector("h3")).toHaveTextContent(
       data[0].jobTitle,
     );
   });
 
   // Check if job cards are displayed when fetching is completed
-  const jobCards = await screen.findAllByRole("article");
-  const headings = await screen.findAllByRole("heading");
+  const jobCards = await within(searchContainer).findAllByRole("article");
+  const headings = await within(searchContainer).findAllByRole("heading");
 
   expect(jobCards).toHaveLength(3);
   expect(headings[headings.length - 1]).toHaveTextContent(data[2].jobTitle);

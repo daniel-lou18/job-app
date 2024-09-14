@@ -26,46 +26,32 @@ async function renderSearch() {
   return render(<Search />);
 }
 
-test("it shows a page title, an input field and 3 job cards", async () => {
-  mockedUseJobs.mockReturnValue({
-    ...mockReturnValue,
-    filteredJobs: testData.slice(0, 3),
-    paginatedJobs: testData.slice(0, 3),
+async function testSuccessful(numberCards = 3) {
+  test(`it shows a page title, an input field and ${numberCards} job cards`, async () => {
+    mockedUseJobs.mockReturnValue({
+      ...mockReturnValue,
+      filteredJobs: testData.slice(0, numberCards),
+      paginatedJobs: testData.slice(0, numberCards),
+    });
+
+    await renderSearch();
+
+    const titles = await screen.findAllByRole("heading");
+    const inputField = await screen.findByRole("textbox", { name: /search/i });
+    const sections = await screen.findAllByRole("region");
+    const jobCards = await within(sections[2]).findAllByRole("article");
+
+    expect(titles[0]).toHaveTextContent("Trouver un job dans la tech");
+    expect(inputField).toHaveValue("");
+    expect(jobCards).toHaveLength(numberCards);
   });
+}
 
-  await renderSearch();
+testSuccessful(3);
 
-  const titles = await screen.findAllByRole("heading");
-  const inputField = await screen.findByRole("textbox", { name: /search/i });
-  const jobCards = await screen.findAllByRole("article");
+testSuccessful(30);
 
-  expect(titles[0]).toHaveTextContent("Trouver un job dans la tech");
-  expect(inputField).toHaveValue("");
-  expect(jobCards).toHaveLength(3);
-});
-
-test("it shows a page title, an input field and 30 job cards", async () => {
-  mockedUseJobs.mockReturnValue({
-    ...mockReturnValue,
-    filteredJobs: testData.slice(0, 30),
-    paginatedJobs: testData.slice(0, 30),
-  });
-
-  await renderSearch();
-
-  const titles = await screen.findAllByRole("heading");
-  const inputField = await screen.findByRole("textbox", { name: /search/i });
-  const allCards = await screen.findAllByRole("article");
-  const jobCards = allCards.filter((card) =>
-    within(card).queryByText("Postuler"),
-  );
-
-  expect(titles[0]).toHaveTextContent("Trouver un job dans la tech");
-  expect(inputField).toHaveValue("");
-  expect(jobCards).toHaveLength(30);
-});
-
-test("it shows skeleton cards on loading state. The amount of skeleton cards is equal to PAGE_SIZE + 3", async () => {
+test("it shows skeleton job cards on loading state. The amount of cards is equal to PAGE_SIZE", async () => {
   mockedUseJobs.mockReturnValue({
     ...mockReturnValue,
     isLoading: true,
@@ -73,9 +59,10 @@ test("it shows skeleton cards on loading state. The amount of skeleton cards is 
 
   await renderSearch();
 
-  const skeletonCards = await screen.findAllByRole("article");
+  const sections = await screen.findAllByRole("region");
+  const skeletonCards = await within(sections[2]).findAllByRole("article");
 
-  expect(skeletonCards).toHaveLength(PAGE_SIZE + 3);
+  expect(skeletonCards).toHaveLength(PAGE_SIZE);
 });
 
 test("it shows an error message on error state", async () => {

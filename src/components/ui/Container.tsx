@@ -17,7 +17,11 @@ export default function Container({
   element = "div",
 }: ContainerProps) {
   if (element === "section") {
-    return <section className={cn("w-full", className)}>{children}</section>;
+    return (
+      <section role="region" className={cn("w-full", className)}>
+        {children}
+      </section>
+    );
   }
   return <div className={cn("w-full", className)}>{children}</div>;
 }
