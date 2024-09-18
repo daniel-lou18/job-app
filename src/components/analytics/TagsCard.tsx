@@ -1,8 +1,11 @@
 import React from "react";
 import Card from "../ui/Card";
 import Button from "../ui/Button";
+import { useQuery } from "@/hooks/useQuery";
 
 function TagsCard({ data }: { data: Record<string, number> }) {
+  const { setQueryParams } = useQuery();
+
   return (
     <Card className="flex-start col-span-2 flex max-w-[100%] flex-col">
       <Card.Title className="text-lg">Mots clés populaires</Card.Title>
@@ -14,7 +17,9 @@ function TagsCard({ data }: { data: Record<string, number> }) {
               <Button
                 className={`h-10 w-fit rounded-full border-none bg-muted text-sm ${value > 2 ? "font-bold" : ""} ${value > 5 ? "bg-muted-foreground text-white" : ""}`}
                 key={key}
-                onClick={() => {}}
+                onClick={() => {
+                  setQueryParams(key);
+                }}
               >
                 {key}
               </Button>

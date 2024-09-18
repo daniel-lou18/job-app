@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { Job } from "@/types";
 import { getJobs } from "@/services/jobService";
-import { useJobsFilter } from "./useJobsFilter";
 import { useJobsPagination } from "./useJobsPagination";
+import { useQuery } from "./useQuery";
 
 export function useJobs() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [jobs, setJobs] = useState<Job[]>([]);
 
-  const { filteredJobs, query, handleQuery, debouncedQuery } =
-    useJobsFilter(jobs);
+  const { filteredJobs, query, handleQuery, getQueryParams, jobs, setJobs } =
+    useQuery();
   const { page, paginatedJobs, handleLoadMore } = useJobsPagination(
     jobs,
     setIsLoading,
@@ -21,10 +20,10 @@ export function useJobs() {
       try {
         setIsLoading(true);
         setError("");
-        const searchParams = new URLSearchParams({ q: debouncedQuery });
-        const jobs = debouncedQuery
-          ? await getJobs(searchParams)
+        const jobs = getQueryParams()
+          ? await getJobs(getQueryParams())
           : await getJobs();
+        console.log(jobs);
         setJobs(jobs);
       } catch (err: unknown) {
         setError(err instanceof Error ? err.message : "Could not fetch jobs");
@@ -35,7 +34,7 @@ export function useJobs() {
     }
 
     fetchData();
-  }, [debouncedQuery]);
+  }, [getQueryParams, setJobs]);
 
   return {
     isLoading,

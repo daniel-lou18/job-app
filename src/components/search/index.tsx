@@ -25,16 +25,6 @@ export default function Search() {
     handleLoadMore,
   } = useJobs();
   const [isVisible, setIsVisible] = useState(true);
-  const [isAtTop, setIsAtTop] = useState(true);
-
-  useEffect(() => {
-    function handleScroll() {
-      setIsAtTop(window.scrollY === 0);
-    }
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   function handleVisibility() {
     setIsVisible((prevState) => !prevState);
@@ -50,7 +40,7 @@ export default function Search() {
         <Analytics
           data={paginatedJobs}
           isLoading={isLoading}
-          visible={isVisible && isAtTop}
+          visible={isVisible}
         />
         <Container
           element="section"
