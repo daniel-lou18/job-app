@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import SearchInput from "../SearchInput";
 import { userEvent } from "@testing-library/user-event";
 import { useQuery } from "@/hooks/useQuery";
-import data from "@/utils/data.json";
 import { ReactElement } from "react";
 
 // Recommended approach for setting up user events + rendering a component
