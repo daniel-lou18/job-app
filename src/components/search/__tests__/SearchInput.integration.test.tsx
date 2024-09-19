@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import SearchInput from "../SearchInput";
 import { userEvent } from "@testing-library/user-event";
-import { useJobsFilter } from "@/hooks/useJobsFilter";
+import { useQuery } from "@/hooks/useQuery";
 import data from "@/utils/data.json";
 import { ReactElement } from "react";
 
@@ -15,7 +15,7 @@ function setup(jsx: ReactElement) {
 
 function MockParentComponent() {
   // We can use the 'real' custom hook inside the mocked parent component
-  const { query, handleQuery } = useJobsFilter(data.slice(0, 3));
+  const { query, handleQuery } = useQuery();
 
   return <SearchInput value={query} onChange={handleQuery} />;
 }
