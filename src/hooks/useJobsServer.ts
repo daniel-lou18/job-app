@@ -19,10 +19,8 @@ export function useJobs() {
       try {
         setIsLoading(true);
         setError("");
-        const jobs = getQueryParams()
-          ? await getJobs(getQueryParams())
-          : await getJobs();
-        console.log(jobs);
+        const queryParams = getQueryParams();
+        const jobs = queryParams ? await getJobs(queryParams) : await getJobs();
         setJobs(jobs);
       } catch (err: unknown) {
         setError(err instanceof Error ? err.message : "Could not fetch jobs");
