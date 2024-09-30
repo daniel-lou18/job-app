@@ -10,6 +10,8 @@ type CardProps = {
   data: Job;
 };
 
+// Use compound component Card
+
 export default function JobCard({ data }: CardProps) {
   const { companyName, jobTitle, location, salary, tags } = data;
 

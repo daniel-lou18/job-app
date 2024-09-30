@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 import { PropsWithChildren, ReactElement } from "react";
 
+// Use compound component pattern for reusability
+
 function Card({
   children,
   className,

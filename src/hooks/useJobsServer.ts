@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Job } from "@/types";
 import { getJobs } from "@/services/jobService";
 import { useJobsPagination } from "./useJobsPagination";
 import { useQuery } from "./useQuery";
